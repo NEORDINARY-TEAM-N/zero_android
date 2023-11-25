@@ -50,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/inputInfo2Fragment"
-        android:name="com.hackathon.zero.InputInfo2Fragment"
+        android:name="com.hackathon.zero.presentation.inputinfo.InputInfo2Fragment"
         android:label="fragment_input_info2"
         tools:layout="@layout/fragment_input_info2" />
 </navigation>

@@ -9,14 +9,14 @@
 
         <variable
             name="vm"
-            type="com.hackathon.zero.InputInfo2ViewModel" />
+            type="com.hackathon.zero.presentation.inputinfo.InputInfo2ViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".InputInfo2Fragment">
+        tools:context=".presentation.inputinfo.InputInfo2Fragment">
 
         <View
             android:id="@+id/oneTapView"
