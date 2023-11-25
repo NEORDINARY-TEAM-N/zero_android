@@ -1,14 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".InputInfoFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="vm"
+            type="com.hackathon.zero.presentation.inputinfo.InputInfoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/topColorIndicatorView"
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/gray600"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/topIndicatorView"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/topIndicatorView"
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/gray200"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/topColorIndicatorView"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/inputTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="프로필 작성"
+            android:theme="@style/pretendard_bold.24sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/topIndicatorView"
+            app:layout_constraintRight_toLeftOf="@id/pageNumberTextView"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pageNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1/2"
+            android:layout_marginRight="20dp"
+            android:theme="@style/pretendard_medium.15sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/inputTitleTextView"
+            app:layout_constraintTop_toTopOf="@id/inputTitleTextView"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/inputSubTitleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="당 섭취량 목표 설정을 위해 필요해요!"
+            android:theme="@style/pretendard_medium.15sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginHorizontal="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputTitleTextView"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/nameTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이름"
+            android:theme="@style/pretendard_bold.16sp"
+            android:textColor="@color/gray800"
+            android:layout_marginTop="48dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintTop_toBottomOf="@id/inputSubTitleTextView"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nameInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/shape_round_8"
+            app:layout_constraintTop_toBottomOf="@id/nameTitleTextView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/nameInputView"
+                android:text="@={vm.name}"
+                android:maxLength="5"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                bind:lengthText="@{vm.name.length()}"
+                bind:maxLength="@{5}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/nameInputView"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/genderTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="성별"
+            android:theme="@style/pretendard_bold.16sp"
+            android:textColor="@color/gray800"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintTop_toBottomOf="@id/nameInputLayout"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/genderSelectLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/genderTitleTextView">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/manButton"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginRight="4dp"
+                android:onClick="@{() -> vm.manClicked()}"
+                android:background="@{vm.isGenderSelectMan() ? @drawable/bg_stroke_red300_solid_red100_round_8 : @drawable/shape_round_8 }"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/womanButton"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="4dp"
+                android:onClick="@{() -> vm.womanClicked()}"
+                android:background="@{vm.isGenderSelectMan() ? @drawable/bg_stroke_red300_solid_red100_round_8 : @drawable/shape_round_8 }"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/heightTitleView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="키"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="4dp"
+            android:theme="@style/pretendard_bold.16sp"
+            app:layout_constraintRight_toLeftOf="@id/weightTitleView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/genderSelectLayout" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/weightTitleView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="몸무게"
+            android:theme="@style/pretendard_bold.16sp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="4dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/heightTitleView"
+            app:layout_constraintTop_toBottomOf="@id/genderSelectLayout" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/heightSelectView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:onClick="@{() -> vm.heightClicked()}"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/shape_round_8"
+            app:layout_constraintRight_toLeftOf="@id/weightSelectView"
+            app:layout_constraintTop_toBottomOf="@id/heightTitleView"
+            app:layout_constraintLeft_toLeftOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                tools:text="180cm"
+                bind:heightFormat="@{vm.height}"
+                android:theme="@style/pretendard_medium.15sp"
+                android:layout_weight="1"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_down"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/weightSelectView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="12dp"
+            android:onClick="@{() -> vm.weightClicked()}"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:background="@drawable/shape_round_8"
+            app:layout_constraintLeft_toRightOf="@id/heightSelectView"
+            app:layout_constraintTop_toBottomOf="@id/weightTitleView"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                tools:text="72kg"
+                bind:weightFormat="@{vm.weight}"
+                android:theme="@style/pretendard_medium.15sp"
+                android:layout_weight="1"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_down"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/ageTitleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="나이"
+            android:theme="@style/pretendard_bold.16sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/heightSelectView"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

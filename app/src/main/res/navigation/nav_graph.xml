@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/inputInfoFragment"
-        android:name="com.hackathon.zero.InputInfoFragment"
+        android:name="com.hackathon.zero.presentation.inputinfo.InputInfoFragment"
         android:label="fragment_input_info"
         tools:layout="@layout/fragment_input_info" >
         <action
