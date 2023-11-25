@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hackathon.zero.HomeViewModel
 import com.hackathon.zero.data.ProductSearchItem
+import com.hackathon.zero.domain.use_case.GetHomeDataUseCase
 import com.hackathon.zero.domain.use_case.GetProductListUseCase
 import com.hackathon.zero.domain.use_case.GetUserInfoUseCase
 import com.hackathon.zero.util.Constants.FRIDAY
@@ -31,17 +32,18 @@ import javax.inject.Inject
 class HomeViewModelImpl @Inject constructor(
     private val getUserInfoUseCase: GetUserInfoUseCase,
     private val getProductListUseCase: GetProductListUseCase,
+    private val getHomeDataUseCase: GetHomeDataUseCase,
     private val sp: SharedPreferencesUtil
 ): ViewModel(), HomeViewModel {
 
-    private var stampMap = mapOf<String, Boolean>(
-        MONDAY to false,
-        TUESDAY to false,
-        WEDNESDAY to false,
-        THURSDAY to false,
-        FRIDAY to false,
-        SATURDAY to false,
-        SUNDAY to false
+    private var stampMap = listOf(
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
     )
 
     private val _isLoading: MutableStateFlow<Boolean> = MutableStateFlow(false)
@@ -65,7 +67,7 @@ class HomeViewModelImpl @Inject constructor(
         get() = _calories
 
     private val _stamps = MutableStateFlow(stampMap)
-    override val stamps: StateFlow<Map<String, Boolean>>
+    override val stamps: StateFlow<List<Boolean>>
         get() = _stamps
 
     override var query = MutableStateFlow<String>("")
@@ -102,14 +104,19 @@ class HomeViewModelImpl @Inject constructor(
     }
 
     private fun postUserInfoValue(userId: Int) {
-        getUserInfoUseCase(userId).onEach { userInfoResource ->
+        getHomeDataUseCase(userId).onEach { userInfoResource ->
             if (isLoading(userInfoResource)) {
                 _isLoading.value = true
             } else if (isSuccess(userInfoResource)) {
                 userInfoResource.data?.let { userInfo ->
-                    _profileName.value = userInfo.name
-                    _sugar.value = userInfo.sugar
-                    _calories.value = userInfo.calorie
+                    _profileName.value = userInfo.username
+                    _sugar.value = userInfo.totalSugar.toDouble()
+                    _calories.value = userInfo.totalKcal.toInt()
+                    var i = -1
+                    _stamps.value.map {
+                        i++
+                        userInfo.completedDate[i] == 1
+                    }
                 }
             } else {
                 _errorMessage.value = userInfoResource.message

@@ -15,7 +15,7 @@ interface HomeViewModel {
     val profileName: StateFlow<String>
     val sugar: StateFlow<Double>
     val calories: StateFlow<Int>
-    val stamps: StateFlow<Map<String, Boolean>>
+    val stamps: StateFlow<List<Boolean>>
     val sharedAction: SharedFlow<Intent>
     var query: MutableStateFlow<String>
     val productList: StateFlow<MutableList<ProductSearchItem?>>
