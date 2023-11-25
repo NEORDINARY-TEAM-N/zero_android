@@ -15,4 +15,6 @@ interface InputInfoViewModel {
     fun womanClicked()
     fun weightClicked()
     fun heightClicked()
+    fun ageClicked()
+    fun nextClicked()
 }

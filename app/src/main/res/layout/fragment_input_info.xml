@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.hackathon.zero.presentation.inputinfo.InputInfoViewModel" />
@@ -21,8 +22,8 @@
             android:layout_marginTop="8dp"
             android:background="@color/gray600"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/topIndicatorView"/>
+            app:layout_constraintRight_toLeftOf="@id/topIndicatorView"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -31,88 +32,88 @@
             android:layout_height="4dp"
             android:layout_marginTop="8dp"
             android:background="@color/gray200"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/topColorIndicatorView"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/inputTitleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="프로필 작성"
-            android:theme="@style/pretendard_bold.24sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/topIndicatorView"
+            android:text="프로필 작성"
+            android:theme="@style/pretendard_bold.24sp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/pageNumberTextView"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/topIndicatorView" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/pageNumberTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1/2"
             android:layout_marginRight="20dp"
+            android:text="1/2"
             android:theme="@style/pretendard_medium.15sp"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/inputTitleTextView"
-            app:layout_constraintTop_toTopOf="@id/inputTitleTextView"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/inputTitleTextView" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/inputSubTitleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="당 섭취량 목표 설정을 위해 필요해요!"
-            android:theme="@style/pretendard_medium.15sp"
-            android:layout_marginTop="12dp"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/inputIntroText"
+            android:theme="@style/pretendard_medium.15sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/inputTitleTextView"/>
+            app:layout_constraintTop_toBottomOf="@id/inputTitleTextView" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/nameTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이름"
-            android:theme="@style/pretendard_bold.16sp"
-            android:textColor="@color/gray800"
-            android:layout_marginTop="48dp"
             android:layout_marginLeft="20dp"
-            app:layout_constraintTop_toBottomOf="@id/inputSubTitleTextView"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            android:layout_marginTop="48dp"
+            android:text="이름"
+            android:textColor="@color/gray800"
+            android:theme="@style/pretendard_bold.16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputSubTitleTextView" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/nameInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:padding="12dp"
             android:layout_marginTop="12dp"
             android:background="@drawable/shape_round_8"
-            app:layout_constraintTop_toBottomOf="@id/nameTitleTextView"
+            android:padding="12dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameTitleTextView">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/nameInputView"
-                android:text="@={vm.name}"
-                android:maxLength="5"
-                android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                android:background="@null"
+                android:maxLength="5"
+                android:text="@={vm.name}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                bind:lengthText="@{vm.name.length()}"
-                bind:maxLength="@{5}"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/nameInputView"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/nameInputView"/>
+                app:layout_constraintTop_toTopOf="parent"
+                bind:lengthText="@{vm.name.length()}"
+                bind:maxLength="@{5}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -120,13 +121,13 @@
             android:id="@+id/genderTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="성별"
-            android:theme="@style/pretendard_bold.16sp"
-            android:textColor="@color/gray800"
-            android:layout_marginTop="32dp"
             android:layout_marginLeft="20dp"
-            app:layout_constraintTop_toBottomOf="@id/nameInputLayout"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            android:layout_marginTop="32dp"
+            android:text="@string/genderText"
+            android:textColor="@color/gray800"
+            android:theme="@style/pretendard_bold.16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameInputLayout" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/genderSelectLayout"
@@ -140,43 +141,43 @@
                 android:id="@+id/manButton"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
                 android:layout_marginRight="4dp"
-                android:onClick="@{() -> vm.manClicked()}"
-                android:background="@{vm.isGenderSelectMan() ? @drawable/bg_stroke_red300_solid_red100_round_8 : @drawable/shape_round_8 }"/>
+                android:layout_weight="1"
+                android:background="@{vm.isGenderSelectMan() ? @drawable/bg_stroke_red300_solid_red100_round_8 : @drawable/shape_round_8 }"
+                android:onClick="@{() -> vm.manClicked()}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/womanButton"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
                 android:layout_marginLeft="4dp"
-                android:onClick="@{() -> vm.womanClicked()}"
-                android:background="@{vm.isGenderSelectMan() ? @drawable/bg_stroke_red300_solid_red100_round_8 : @drawable/shape_round_8 }"/>
+                android:layout_weight="1"
+                android:background="@{vm.isGenderSelectMan() ? @drawable/bg_stroke_red300_solid_red100_round_8 : @drawable/shape_round_8 }"
+                android:onClick="@{() -> vm.womanClicked()}" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/heightTitleView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="키"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="4dp"
+            android:text="@string/heightTexr"
             android:theme="@style/pretendard_bold.16sp"
-            app:layout_constraintRight_toLeftOf="@id/weightTitleView"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/weightTitleView"
             app:layout_constraintTop_toBottomOf="@id/genderSelectLayout" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/weightTitleView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="몸무게"
-            android:theme="@style/pretendard_bold.16sp"
-            android:layout_marginRight="20dp"
             android:layout_marginLeft="4dp"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="20dp"
+            android:text="@string/weightText"
+            android:theme="@style/pretendard_bold.16sp"
             app:layout_constraintLeft_toRightOf="@id/heightTitleView"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/genderSelectLayout" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -185,27 +186,27 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="12dp"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="12dp"
-            android:onClick="@{() -> vm.heightClicked()}"
             android:layout_marginRight="4dp"
             android:background="@drawable/shape_round_8"
+            android:onClick="@{() -> vm.heightClicked()}"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/weightSelectView"
-            app:layout_constraintTop_toBottomOf="@id/heightTitleView"
-            app:layout_constraintLeft_toLeftOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/heightTitleView">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                tools:text="180cm"
-                bind:heightFormat="@{vm.height}"
+                android:layout_weight="1"
                 android:theme="@style/pretendard_medium.15sp"
-                android:layout_weight="1"/>
+                bind:heightFormat="@{vm.height}"
+                tools:text="180cm" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_down"/>
+                android:src="@drawable/ic_arrow_down" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -214,28 +215,28 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="12dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/shape_round_8"
             android:onClick="@{() -> vm.weightClicked()}"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
-            android:background="@drawable/shape_round_8"
             app:layout_constraintLeft_toRightOf="@id/heightSelectView"
-            app:layout_constraintTop_toBottomOf="@id/weightTitleView"
-            app:layout_constraintRight_toRightOf="parent">
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weightTitleView">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                tools:text="72kg"
-                bind:weightFormat="@{vm.weight}"
+                android:layout_weight="1"
                 android:theme="@style/pretendard_medium.15sp"
-                android:layout_weight="1"/>
+                bind:weightFormat="@{vm.weight}"
+                tools:text="72kg" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_down"/>
+                android:src="@drawable/ic_arrow_down" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -243,12 +244,45 @@
             android:id="@+id/ageTitleView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="나이"
-            android:theme="@style/pretendard_bold.16sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@id/heightSelectView"
-            app:layout_constraintLeft_toLeftOf="parent"/>
+            android:text="@string/age"
+            android:theme="@style/pretendard_bold.16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heightSelectView" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/background_spinner"
+            android:gravity="start|center"
+            android:onClick="@{()->vm.ageClicked()}"
+            android:text="@{vm.age}"
+            android:textColor="@color/gray600"
+            android:theme="@style/pretendard_medium.15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ageTitleView"
+            tools:text="24" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/shape_round_8"
+            android:backgroundTint="@color/red300"
+            android:onClick="@{()-> vm.nextClicked()}"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:theme="@style/pretendard_bold.21sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
