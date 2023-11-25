@@ -7,14 +7,11 @@ interface InputInfoViewModel {
 
     val name: MutableStateFlow<String>
     val isGenderSelectMan: StateFlow<Boolean>
-    val weight: StateFlow<Int>
-    val height: StateFlow<Int>
-    val age: StateFlow<Int>
+    val weight: MutableStateFlow<String>
+    val height: MutableStateFlow<String>
+    val age: MutableStateFlow<String>
 
     fun manClicked()
     fun womanClicked()
-    fun weightClicked()
-    fun heightClicked()
-    fun ageClicked()
     fun nextClicked()
 }
