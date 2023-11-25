@@ -1,6 +1,7 @@
 package com.hackathon.zero.data.repository
 
 import com.hackathon.zero.core.dto.ResponseBody
+import com.hackathon.zero.data.HomeData
 import com.hackathon.zero.data.HomeUserInfo
 import com.hackathon.zero.data.PostUserInfo
 import com.hackathon.zero.data.UserInfoInput
@@ -16,5 +17,9 @@ class UserInfoRepositoryImpl(
 
     override suspend fun getUserInfo(userId: Int): ResponseBody<HomeUserInfo?> {
         return api.getUserInfo(userId)
+    }
+
+    override suspend fun getHomeData(userId: Int): ResponseBody<HomeData?> {
+        return api.getHomeInfo(userId)
     }
 }

@@ -2,6 +2,7 @@ package com.hackathon.zero.domain.use_case
 
 import com.hackathon.zero.core.Resource
 import com.hackathon.zero.data.Product
+import com.hackathon.zero.data.ProductSearchItem
 import com.hackathon.zero.domain.ProductRepository
 import com.hackathon.zero.util.Constants
 import com.hackathon.zero.util.isSuccessful
@@ -12,8 +13,7 @@ import javax.inject.Inject
 class GetProductListUseCase @Inject constructor(
     private val productRepository: ProductRepository
 ) {
-
-    operator fun invoke(keyword: String, lastProductId : Int): Flow<Resource<Product>> = flow {
+    operator fun invoke(keyword: String, lastProductId : Int): Flow<Resource<MutableList<ProductSearchItem?>>> = flow {
         runCatching {
             emit(Resource.loading())
             val response = productRepository.getProductList(keyword, lastProductId)

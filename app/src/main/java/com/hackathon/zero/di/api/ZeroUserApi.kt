@@ -1,6 +1,7 @@
 package com.hackathon.zero.di.api
 
 import com.hackathon.zero.core.dto.ResponseBody
+import com.hackathon.zero.data.HomeData
 import com.hackathon.zero.data.HomeUserInfo
 import com.hackathon.zero.data.PostUserInfo
 import com.hackathon.zero.data.UserInfoInput
@@ -19,4 +20,9 @@ interface ZeroUserApi {
     suspend fun getUserInfo(
         @Path("userId") userId: Int
     ): ResponseBody<HomeUserInfo?>
+
+    @GET("/api/v1/user/{userId}/note")
+    suspend fun getHomeInfo(
+        @Path("userId") userId: Int
+    ): ResponseBody<HomeData?>
 }

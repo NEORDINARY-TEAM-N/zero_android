@@ -231,7 +231,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_stamp_monday"
-                                    android:visibility="@{vm.stamps.get(constants.MONDAY) ? View.VISIBLE : View.GONE}"/>
+                                    android:visibility="@{vm.stamps.get(0) ? View.VISIBLE : View.GONE}"/>
 
                             </androidx.cardview.widget.CardView>
 
@@ -257,7 +257,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_stamp_tuesday"
-                                    android:visibility="@{vm.stamps.get(constants.TUESDAY) ? View.VISIBLE : View.GONE}"/>
+                                    android:visibility="@{vm.stamps.get(1) ? View.VISIBLE : View.GONE}"/>
 
                             </androidx.cardview.widget.CardView>
 
@@ -283,7 +283,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_stamp_wednesday"
-                                    android:visibility="@{vm.stamps.get(constants.WEDNESDAY) ? View.VISIBLE : View.GONE}"/>
+                                    android:visibility="@{vm.stamps.get(2) ? View.VISIBLE : View.GONE}"/>
 
                             </androidx.cardview.widget.CardView>
 
@@ -318,7 +318,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_stamp_thursday"
-                                    android:visibility="@{vm.stamps.get(constants.THURSDAY) ? View.VISIBLE : View.GONE}"/>
+                                    android:visibility="@{vm.stamps.get(3) ? View.VISIBLE : View.GONE}"/>
 
                             </androidx.cardview.widget.CardView>
 
@@ -344,7 +344,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_stamp_friday"
-                                    android:visibility="@{vm.stamps.get(constants.FRIDAY) ? View.VISIBLE : View.GONE}"/>
+                                    android:visibility="@{vm.stamps.get(4) ? View.VISIBLE : View.GONE}"/>
 
                             </androidx.cardview.widget.CardView>
 
@@ -370,7 +370,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_stamp_saturday"
-                                    android:visibility="@{vm.stamps.get(constants.SATURDAY) ? View.VISIBLE : View.GONE}"/>
+                                    android:visibility="@{vm.stamps.get(5) ? View.VISIBLE : View.GONE}"/>
 
                             </androidx.cardview.widget.CardView>
 
@@ -396,7 +396,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_stamp_sunday"
-                                    android:visibility="@{vm.stamps.get(constants.SUNDAY) ? View.VISIBLE : View.GONE}"/>
+                                    android:visibility="@{vm.stamps.get(6) ? View.VISIBLE : View.GONE}"/>
 
                             </androidx.cardview.widget.CardView>
 
@@ -475,7 +475,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginVertical="24dp"
+                android:layout_marginVertical="12dp"
                 android:layout_marginHorizontal="20dp">
 
                 <TextView
@@ -507,7 +507,7 @@
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_view"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:focusable="true"
                 android:padding="20dp"
                 app:iconifiedByDefault="false"
