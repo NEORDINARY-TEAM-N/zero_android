@@ -1,6 +1,8 @@
 package com.hackathon.zero.di
 
+import com.hackathon.zero.data.UserInfoRepositoryImpl
 import com.hackathon.zero.di.api.ZeroUserApi
+import com.hackathon.zero.domain.UserInfoRepository
 import com.hackathon.zero.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -47,4 +49,9 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ZeroUserApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideUserInfoRepository(api: ZeroUserApi): UserInfoRepository =
+        UserInfoRepositoryImpl(api)
 }
