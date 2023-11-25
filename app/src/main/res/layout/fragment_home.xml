@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.hackathon.zero.HomeViewModel" />
 
-        </data>
+    </data>
 
     <com.sothree.slidinguppanel.SlidingUpPanelLayout
         android:id="@+id/main_frame"
@@ -22,214 +23,336 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <View
+                android:id="@+id/view_header"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="22dp"
+                android:background="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/myCardView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/homeNameT"
+                style="@style/h2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                style="@style/h2"
-                tools:text = "000님,\n오늘의 섭취량을 확인하세요"
+                android:layout_marginTop="24dp"
                 android:text="@{vm.profileName != null ? @string/home_header_logged_in(vm.profileName) : @string/home_header_not_logged_in}"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                tools:text="000님,\n오늘의 섭취량을 확인하세요" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/shareBtn"
-                android:layout_width="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_share"
-                android:layout_height="wrap_content"
-                android:onClick="@{() -> vm.sharedClicked()}"
-                app:layout_constraintTop_toTopOf="@id/homeNameT"
-                app:layout_constraintBottom_toBottomOf="@id/homeNameT"
-                app:layout_constraintRight_toRightOf="parent"/>
+            <!--            <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/shareBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:src="@drawable/ic_share"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{() -> vm.sharedClicked()}"
+                            app:layout_constraintTop_toTopOf="@id/homeNameT"
+                            app:layout_constraintBottom_toBottomOf="@id/homeNameT"
+                            app:layout_constraintRight_toRightOf="parent"/>-->
 
-            
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/myCardView"
-                android:layout_marginTop="20dp"
-                app:cardCornerRadius="8dp"
-                android:layout_marginHorizontal="20dp"
-                app:layout_constraintTop_toBottomOf="@id/homeNameT"
                 android:layout_width="0dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/gray300"
+                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_height="wrap_content">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/homeNameT">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ll_total_intake"
                     android:layout_width="match_parent"
-                    android:background="@color/pink100"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="16dp"
-                        android:id="@+id/todayTotalText"
-                        android:text="@string/todayTotalTextIntake"
-                        style="@style/b2"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="36dp"
+                    android:paddingVertical="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/sugarT"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/todayTotalText"
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
-                        style="@style/b1"
-                        android:layout_marginBottom="16dp"
-                        android:textColor="@color/red300"
-                        android:text="@string/sugarText"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        app:layout_constraintStart_toEndOf="@id/sugarT"
-                        app:layout_constraintTop_toTopOf="@id/sugarT"
-                        app:layout_constraintBottom_toBottomOf="@id/sugarT"
-                        style="@style/h5"
-                        android:text="@{vm.sugar != null ? @string/sugar_info(vm.sugar) : @string/sugar_info(@string/amount_none)}"
-                        tools:text="16g"
-                        android:id="@+id/mySugarT"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        <TextView
+                            style="@style/pretendard_medium.15sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sugarText"
+                            android:textColor="@color/red300" />
+
+                        <TextView
+                            android:id="@+id/mySugarT"
+                            style="@style/pretendard_bold.21sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@{vm.sugar != null ? @string/sugar_info(vm.sugar) : @string/sugar_info(@string/amount_none)}"
+                            android:textStyle="bold"
+                            tools:text="16g" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <View
-                        android:layout_marginVertical="4dp"
-                        android:id="@+id/line"
-                        android:layout_marginStart="16dp"
-                        android:background="@color/gray400"
-                        app:layout_constraintTop_toTopOf="@id/sugarT"
-                        app:layout_constraintBottom_toBottomOf="@id/sugarT"
-                        app:layout_constraintStart_toEndOf="@id/mySugarT"
+                        android:id="@+id/separator_header"
                         android:layout_width="1dp"
-                        android:layout_height="0dp"/>
+                        android:layout_height="42dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:background="@color/gray300" />
 
-                    <TextView
-                        android:id="@+id/calorieT"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toEndOf="@id/line"
-                        app:layout_constraintTop_toBottomOf="@id/todayTotalText"
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
-                        style="@style/b1"
-                        android:layout_marginBottom="16dp"
-                        android:textColor="@color/red300"
-                        android:text="@string/calorieText"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        app:layout_constraintStart_toEndOf="@id/calorieT"
-                        app:layout_constraintTop_toTopOf="@id/sugarT"
-                        app:layout_constraintBottom_toBottomOf="@id/sugarT"
-                        style="@style/h5"
-                        android:text="@{vm.calories != null ? @string/calorie_info(vm.calories) : @string/calorie_info(@string/amount_none)}"
-                        tools:text="160kcal"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:id="@+id/myCalorieT"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        <TextView
+                            style="@style/pretendard_medium.15sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/calorieText"
+                            android:textColor="@color/red300" />
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginEnd="16dp"
-                        android:src="@drawable/ic_arrow_front"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/myCalorieT"
+                            style="@style/pretendard_bold.21sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@{vm.calories != null ? @string/calorie_info(vm.calories) : @string/calorie_info(@string/amount_none)}"
+                            android:textStyle="bold"
+                            tools:text="100kcal" />
 
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- <TextView
+                     android:layout_marginTop="16dp"
+                     android:layout_marginStart="16dp"
+                     android:id="@+id/todayTotalText"
+                     android:text="@string/todayTotalTextIntake"
+                     style="@style/b2"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toTopOf="parent"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"/>
+
+                 <TextView
+                     android:id="@+id/sugarT"
+                     android:layout_marginStart="16dp"
+                     android:layout_marginTop="8dp"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toBottomOf="@id/todayTotalText"
+                     android:layout_width="wrap_content"
+                     style="@style/b1"
+                     android:layout_marginBottom="16dp"
+                     android:textColor="@color/red300"
+                     android:text="@string/sugarText"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     android:layout_height="wrap_content"/>
+
+                 <TextView
+                     app:layout_constraintStart_toEndOf="@id/sugarT"
+                     app:layout_constraintTop_toTopOf="@id/sugarT"
+                     app:layout_constraintBottom_toBottomOf="@id/sugarT"
+                     style="@style/h5"
+                     android:text="@{vm.sugar != null ? @string/sugar_info(vm.sugar) : @string/sugar_info(@string/amount_none)}"
+                     tools:text="16g"
+                     android:id="@+id/mySugarT"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"/>
+
+                 <View
+                     android:layout_marginVertical="4dp"
+                     android:id="@+id/line"
+                     android:layout_marginStart="16dp"
+                     android:background="@color/gray400"
+                     app:layout_constraintTop_toTopOf="@id/sugarT"
+                     app:layout_constraintBottom_toBottomOf="@id/sugarT"
+                     app:layout_constraintStart_toEndOf="@id/mySugarT"
+                     android:layout_width="1dp"
+                     android:layout_height="0dp"/>
+
+                 <TextView
+                     android:id="@+id/calorieT"
+                     android:layout_marginStart="16dp"
+                     android:layout_marginTop="8dp"
+                     app:layout_constraintStart_toEndOf="@id/line"
+                     app:layout_constraintTop_toBottomOf="@id/todayTotalText"
+                     android:layout_width="wrap_content"
+                     style="@style/b1"
+                     android:layout_marginBottom="16dp"
+                     android:textColor="@color/red300"
+                     android:text="@string/calorieText"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     android:layout_height="wrap_content"/>
+
+                 <TextView
+                     app:layout_constraintStart_toEndOf="@id/calorieT"
+                     app:layout_constraintTop_toTopOf="@id/sugarT"
+                     app:layout_constraintBottom_toBottomOf="@id/sugarT"
+                     style="@style/h5"
+                     android:text="@{vm.calories != null ? @string/calorie_info(vm.calories) : @string/calorie_info(@string/amount_none)}"
+                     tools:text="160kcal"
+                     android:maxLines="1"
+                     android:ellipsize="end"
+                     android:id="@+id/myCalorieT"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"/>
+
+                 <androidx.appcompat.widget.AppCompatImageView
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     android:layout_marginEnd="16dp"
+                     android:src="@drawable/ic_arrow_front"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"/>
+
+-->
 
             </androidx.cardview.widget.CardView>
 
 
             <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_marginTop="8dp"
-                app:cardCornerRadius="8dp"
                 android:id="@+id/weekInfoCardView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="360dp"
                 android:layout_marginHorizontal="20dp"
-                app:layout_constraintTop_toBottomOf="@id/myCardView"
-                android:layout_height="408dp">
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_weekly_intake"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/myCardView">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    tools:background="@color/gray900"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    tools:background="@color/gray900">
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_weekly_intake"
+                        style="@style/h5"
                         android:layout_width="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="20dp"
-                        style="@style/h5"
+                        android:text="이번주 당 섭취"
                         android:textColor="@color/gray100"
-                        android:layout_height="wrap_content"
-                        android:text="이번주 당 섭취"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/pretendard_medium.12sp"
                         android:layout_width="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        style="@style/h4"
-                        android:textColor="@color/gray100"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:text="시작하려면\n 개인정보를 입력해주세요\n+"
-                        android:gravity="center"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/home_sugar_limitation"
+                        android:textColor="@color/gray400"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_weekly_intake"
+                        app:layout_constraintStart_toEndOf="@id/tv_weekly_intake" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="148dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginBottom="40dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toTopOf="@id/btn_start">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_weekday_line1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_weekly_line2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_start"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_margin="16dp"
+                        android:background="@color/red300"
+                        android:bottomLeftRadius="10dp"
+                        android:bottomRightRadius="10dp"
+                        android:text="@string/btn_start"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:topLeftRadius="10dp"
+                        android:topRightRadius="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/editGoalBtn"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:text="목표 수정"
-                app:layout_constraintEnd_toStartOf="@id/line2"
                 style="@style/b2"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                android:textColor="@color/gray600"
-                app:layout_constraintTop_toBottomOf="@id/weekInfoCardView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="목표 수정"
+                android:textColor="@color/gray600"
+                app:layout_constraintEnd_toStartOf="@id/line2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/weekInfoCardView" />
 
             <View
-                android:layout_marginVertical="4dp"
                 android:id="@+id/line2"
-                android:layout_marginStart="16dp"
-                app:layout_constraintEnd_toStartOf="@id/recordSugarBtn"
-                android:background="@color/gray400"
-                app:layout_constraintTop_toTopOf="@id/editGoalBtn"
-                app:layout_constraintBottom_toBottomOf="@id/editGoalBtn"
-                app:layout_constraintStart_toEndOf="@id/editGoalBtn"
                 android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="4dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_height="0dp"/>
+                android:background="@color/gray400"
+                app:layout_constraintBottom_toBottomOf="@id/editGoalBtn"
+                app:layout_constraintEnd_toStartOf="@id/recordSugarBtn"
+                app:layout_constraintStart_toEndOf="@id/editGoalBtn"
+                app:layout_constraintTop_toTopOf="@id/editGoalBtn" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/recordSugarBtn"
-                app:layout_constraintStart_toEndOf="@id/line2"
-                app:layout_constraintTop_toTopOf="@id/line2"
+                style="@style/b2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="혈당 기록"
+                android:textColor="@color/gray600"
                 app:layout_constraintBottom_toBottomOf="@id/line2"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="혈당 기록"
-                style="@style/b2"
-                android:textColor="@color/gray600"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                app:layout_constraintStart_toEndOf="@id/line2"
+                app:layout_constraintTop_toTopOf="@id/line2" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

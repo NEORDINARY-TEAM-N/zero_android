@@ -17,4 +17,6 @@
     <string name="heightTexr">키</string>
     <string name="genderText">성별</string>
     <string name="inputIntroText">당 섭취량 목표 설정을 위해 필요해요!</string>
+    <string name="home_sugar_limitation">매일 25g 미만</string>
+    <string name="btn_start">시작하기</string>
 </resources>
