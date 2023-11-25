@@ -8,7 +8,14 @@ import com.hackathon.zero.core.Resource
 import com.hackathon.zero.data.UserInfoInput
 import com.hackathon.zero.domain.use_case.GetUserInfoUseCase
 import com.hackathon.zero.domain.use_case.PostUserInfoUseCase
+import com.hackathon.zero.util.Constants.FRIDAY
+import com.hackathon.zero.util.Constants.MONDAY
+import com.hackathon.zero.util.Constants.SATURDAY
+import com.hackathon.zero.util.Constants.SUNDAY
+import com.hackathon.zero.util.Constants.THURSDAY
+import com.hackathon.zero.util.Constants.TUESDAY
 import com.hackathon.zero.util.Constants.USER_ID
+import com.hackathon.zero.util.Constants.WEDNESDAY
 import com.hackathon.zero.util.SharedPreferencesUtil
 import com.hackathon.zero.util.isLoading
 import com.hackathon.zero.util.isSuccess
@@ -26,6 +33,16 @@ class HomeViewModelImpl @Inject constructor(
     private val getUserInfoUseCase: GetUserInfoUseCase,
     private val sp: SharedPreferencesUtil
 ): ViewModel(), HomeViewModel {
+
+    private var stampMap = mapOf<String, Boolean>(
+        MONDAY to false,
+        TUESDAY to false,
+        WEDNESDAY to false,
+        THURSDAY to false,
+        FRIDAY to false,
+        SATURDAY to false,
+        SUNDAY to false
+    )
 
     private val _isLoading: MutableStateFlow<Boolean> = MutableStateFlow(false)
     override val isLoading: StateFlow<Boolean>
@@ -46,6 +63,10 @@ class HomeViewModelImpl @Inject constructor(
     private val _calories: MutableStateFlow<Int> = MutableStateFlow(0)
     override val calories: StateFlow<Int>
         get() = _calories
+
+    private val _stamps = MutableStateFlow(stampMap)
+    override val stamps: StateFlow<Map<String, Boolean>>
+        get() = _stamps
 
     private val _sharedAction: MutableSharedFlow<Intent> = MutableSharedFlow()
     override val sharedAction: SharedFlow<Intent>
@@ -75,6 +96,7 @@ class HomeViewModelImpl @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
+
 
     companion object {
         const val UNREGISTERED_USER = "User"

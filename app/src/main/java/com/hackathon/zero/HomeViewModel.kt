@@ -12,6 +12,7 @@ interface HomeViewModel {
     val profileName: StateFlow<String>
     val sugar: StateFlow<Double>
     val calories: StateFlow<Int>
+    val stamps: StateFlow<Map<String, Boolean>>
     val sharedAction: SharedFlow<Intent>
 
     fun sharedClicked()

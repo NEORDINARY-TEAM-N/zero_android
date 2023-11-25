@@ -5,9 +5,13 @@
 
     <data>
 
+        <import type="android.view.View" />
         <variable
             name="vm"
             type="com.hackathon.zero.HomeViewModel" />
+        <variable
+            name="constants"
+            type="com.hackathon.zero.util.Constants" />
 
     </data>
 
@@ -103,7 +107,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="@{vm.sugar != null ? @string/sugar_info(vm.sugar) : @string/sugar_info(@string/amount_none)}"
+                            android:text="@{vm.sugar != 0.0 ? @string/sugar_info(vm.sugar) : @string/sugar_info(@string/amount_none)}"
                             android:textStyle="bold"
                             tools:text="16g" />
 
@@ -137,98 +141,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="@{vm.calories != null ? @string/calorie_info(vm.calories) : @string/calorie_info(@string/amount_none)}"
+                            android:text="@{vm.calories != 0 ? @string/calorie_info(vm.calories) : @string/calorie_info(@string/amount_none)}"
                             android:textStyle="bold"
                             tools:text="100kcal" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
-
-                <!-- <TextView
-                     android:layout_marginTop="16dp"
-                     android:layout_marginStart="16dp"
-                     android:id="@+id/todayTotalText"
-                     android:text="@string/todayTotalTextIntake"
-                     style="@style/b2"
-                     app:layout_constraintStart_toStartOf="parent"
-                     app:layout_constraintTop_toTopOf="parent"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"/>
-
-                 <TextView
-                     android:id="@+id/sugarT"
-                     android:layout_marginStart="16dp"
-                     android:layout_marginTop="8dp"
-                     app:layout_constraintStart_toStartOf="parent"
-                     app:layout_constraintTop_toBottomOf="@id/todayTotalText"
-                     android:layout_width="wrap_content"
-                     style="@style/b1"
-                     android:layout_marginBottom="16dp"
-                     android:textColor="@color/red300"
-                     android:text="@string/sugarText"
-                     app:layout_constraintBottom_toBottomOf="parent"
-                     android:layout_height="wrap_content"/>
-
-                 <TextView
-                     app:layout_constraintStart_toEndOf="@id/sugarT"
-                     app:layout_constraintTop_toTopOf="@id/sugarT"
-                     app:layout_constraintBottom_toBottomOf="@id/sugarT"
-                     style="@style/h5"
-                     android:text="@{vm.sugar != null ? @string/sugar_info(vm.sugar) : @string/sugar_info(@string/amount_none)}"
-                     tools:text="16g"
-                     android:id="@+id/mySugarT"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"/>
-
-                 <View
-                     android:layout_marginVertical="4dp"
-                     android:id="@+id/line"
-                     android:layout_marginStart="16dp"
-                     android:background="@color/gray400"
-                     app:layout_constraintTop_toTopOf="@id/sugarT"
-                     app:layout_constraintBottom_toBottomOf="@id/sugarT"
-                     app:layout_constraintStart_toEndOf="@id/mySugarT"
-                     android:layout_width="1dp"
-                     android:layout_height="0dp"/>
-
-                 <TextView
-                     android:id="@+id/calorieT"
-                     android:layout_marginStart="16dp"
-                     android:layout_marginTop="8dp"
-                     app:layout_constraintStart_toEndOf="@id/line"
-                     app:layout_constraintTop_toBottomOf="@id/todayTotalText"
-                     android:layout_width="wrap_content"
-                     style="@style/b1"
-                     android:layout_marginBottom="16dp"
-                     android:textColor="@color/red300"
-                     android:text="@string/calorieText"
-                     app:layout_constraintBottom_toBottomOf="parent"
-                     android:layout_height="wrap_content"/>
-
-                 <TextView
-                     app:layout_constraintStart_toEndOf="@id/calorieT"
-                     app:layout_constraintTop_toTopOf="@id/sugarT"
-                     app:layout_constraintBottom_toBottomOf="@id/sugarT"
-                     style="@style/h5"
-                     android:text="@{vm.calories != null ? @string/calorie_info(vm.calories) : @string/calorie_info(@string/amount_none)}"
-                     tools:text="160kcal"
-                     android:maxLines="1"
-                     android:ellipsize="end"
-                     android:id="@+id/myCalorieT"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"/>
-
-                 <androidx.appcompat.widget.AppCompatImageView
-                     app:layout_constraintTop_toTopOf="parent"
-                     app:layout_constraintEnd_toEndOf="parent"
-                     app:layout_constraintBottom_toBottomOf="parent"
-                     android:layout_marginEnd="16dp"
-                     android:src="@drawable/ic_arrow_front"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"/>
-
--->
 
             </androidx.cardview.widget.CardView>
 
@@ -237,25 +156,29 @@
                 android:id="@+id/weekInfoCardView"
                 android:layout_width="0dp"
                 android:layout_height="360dp"
-                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/background_weekly_intake"
                 app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/myCardView">
+                app:layout_constraintTop_toBottomOf="@id/myCardView"
+                android:layout_marginHorizontal="20dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/background_weekly_intake"
+                    android:scaleType="centerCrop"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:background="@color/gray900">
+                    android:layout_height="match_parent">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_weekly_intake"
-                        style="@style/h5"
+                        style="@style/pretendard_bold.16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:text="이번주 당 섭취"
                         android:textColor="@color/gray100"
@@ -274,25 +197,210 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
-                        android:layout_height="148dp"
-                        android:layout_marginHorizontal="16dp"
+                        android:layout_height="158dp"
+                        android:layout_marginHorizontal="20dp"
                         android:layout_marginBottom="40dp"
                         android:orientation="vertical"
                         app:layout_constraintBottom_toTopOf="@id/btn_start">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_weekday_line1"
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/ll_weekdays_top"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1" />
+                            android:layout_height="72dp"
+                            android:orientation="horizontal">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_weekly_line2"
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_monday"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginStart="40dp"
+                                android:backgroundTint="@color/gray900">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="월"
+                                    style="@style/pretendard_medium.14sp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:backgroundTint="@color/gray400"/>
+
+                                <ImageView
+                                    android:id="@+id/iv_stamp_monday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_stamp_monday"
+                                    android:visibility="@{vm.stamps.get(constants.MONDAY) ? View.VISIBLE : View.GONE}"/>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_tuesday"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                android:layout_marginHorizontal="20dp"
+                                app:cardCornerRadius="8dp"
+                                android:backgroundTint="@color/gray900">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="화"
+                                    style="@style/pretendard_medium.14sp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:backgroundTint="@color/gray400" />
+
+                                <ImageView
+                                    android:id="@+id/iv_stamp_tuesday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_stamp_tuesday"
+                                    android:visibility="@{vm.stamps.get(constants.TUESDAY) ? View.VISIBLE : View.GONE}"/>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_wednesday"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginEnd="40dp"
+                                android:backgroundTint="@color/gray900">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="수"
+                                    style="@style/pretendard_medium.14sp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:backgroundTint="@color/gray400" />
+
+                                <ImageView
+                                    android:id="@+id/iv_stamp_wednesday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_stamp_wednesday"
+                                    android:visibility="@{vm.stamps.get(constants.WEDNESDAY) ? View.VISIBLE : View.GONE}"/>
+
+                            </androidx.cardview.widget.CardView>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/ll_weekdays_bottom"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1" />
+                            android:layout_height="72dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_thursday"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginEnd="6dp"
+                                android:backgroundTint="@color/gray900">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="목"
+                                    style="@style/pretendard_medium.14sp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:backgroundTint="@color/gray900"/>
+
+                                <ImageView
+                                    android:id="@+id/iv_stamp_thursday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_stamp_thursday"
+                                    android:visibility="@{vm.stamps.get(constants.THURSDAY) ? View.VISIBLE : View.GONE}"/>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_friday"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginHorizontal="6dp"
+                                android:backgroundTint="@color/gray900">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="금"
+                                    style="@style/pretendard_medium.14sp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:backgroundTint="@color/gray900" />
+
+                                <ImageView
+                                    android:id="@+id/iv_stamp_friday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_stamp_friday"
+                                    android:visibility="@{vm.stamps.get(constants.FRIDAY) ? View.VISIBLE : View.GONE}"/>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_saturday"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginHorizontal="8dp"
+                                android:backgroundTint="@color/gray900">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="토"
+                                    style="@style/pretendard_medium.14sp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:backgroundTint="@color/gray400" />
+
+                                <ImageView
+                                    android:id="@+id/iv_stamp_saturday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_stamp_saturday"
+                                    android:visibility="@{vm.stamps.get(constants.SATURDAY) ? View.VISIBLE : View.GONE}"/>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/card_sunday"
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginStart="6dp"
+                                android:backgroundTint="@color/gray900">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="일"
+                                    style="@style/pretendard_medium.14sp"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:backgroundTint="@color/gray400" />
+
+                                <ImageView
+                                    android:id="@+id/iv_stamp_sunday"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_stamp_sunday"
+                                    android:visibility="@{vm.stamps.get(constants.SUNDAY) ? View.VISIBLE : View.GONE}"/>
+
+                            </androidx.cardview.widget.CardView>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -301,15 +409,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="52dp"
                         android:layout_margin="16dp"
-                        android:background="@color/red300"
-                        android:bottomLeftRadius="10dp"
-                        android:bottomRightRadius="10dp"
+                        android:backgroundTint="@color/red300"
                         android:text="@string/btn_start"
                         android:textColor="@color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:topLeftRadius="10dp"
-                        android:topRightRadius="10dp"
+                        android:background="@drawable/radius_button"
                         app:layout_constraintBottom_toBottomOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -362,57 +467,76 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btn_touch"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="터치잠금"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_toggle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btn_toggle" />
-
-            <Button
-                android:id="@+id/btn_toggle"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="열기"
-                app:layout_constraintEnd_toEndOf="parent"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_header"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/btn_enable"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="비활성화"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_toggle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/btn_toggle" />
-
-            <TextView
-                android:id="@+id/tv_slideText1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="128dp"
-                android:text="slideOffset"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginVertical="24dp"
+                android:layout_marginHorizontal="20dp">
 
-            <TextView
-                android:id="@+id/tv_slideOffset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="TextView"
-                android:textColor="?android:attr/textColorPrimary"
+                <TextView
+                    android:id="@+id/tv_record_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/header_beverage_record"
+                    style="@style/pretendard_bold.18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_weight="4"/>
+
+                <ImageView
+                    android:id="@+id/btn_write"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_write" />
+
+                <ImageView
+                    android:id="@+id/btn_stretch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ic_arrow_up" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:focusable="true"
+                android:padding="20dp"
+                app:iconifiedByDefault="false"
+                app:layout_constraintTop_toBottomOf="@id/ll_header"
+                app:layout_constraintVertical_weight="1"
+                app:queryHint="@string/hint_enter_beverage" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_search_result"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/search_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="20dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_complete"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/red300"
+                android:text="@string/btn_complete"
+                android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_slideText1" />
+                android:textStyle="bold"
+                android:background="@drawable/radius_button"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

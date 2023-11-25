@@ -7,6 +7,7 @@ import com.hackathon.zero.base.BaseFragment
 import com.hackathon.zero.base.HomeViewModelImpl
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+
 import androidx.navigation.fragment.findNavController
 import com.hackathon.zero.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +30,10 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             viewModel.sharedAction.collect {
 
             }
+        }
+
+        binding.btnStart.setOnClickListener {
+            it.findNavController().navigate(R.id.action_homeFragment_to_privateInfoFragment)
         }
     }
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.hackathon.zero.R
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
@@ -19,7 +20,7 @@ class InputInfoViewModelImpl: ViewModel(), InputInfoViewModel {
     override val height: MutableStateFlow<String> = MutableStateFlow("")
     override val age: MutableStateFlow<String> = MutableStateFlow("")
     private val _moveTo: MutableSharedFlow<Int> = MutableSharedFlow()
-    override val moveTo: MutableSharedFlow<Int> get() = _moveTo
+    override val moveTo: SharedFlow<Int> get() = _moveTo
 
 
     override fun manClicked() {
