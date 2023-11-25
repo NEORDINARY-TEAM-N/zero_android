@@ -1,5 +1,6 @@
 package com.hackathon.zero.domain.use_case
 
+import android.util.Log
 import com.hackathon.zero.data.UserInfoInput
 import com.hackathon.zero.domain.UserInfoRepository
 import com.hackathon.zero.util.Constants.ERROR_UNKNOWN
@@ -23,7 +24,7 @@ class PostUserInfoUseCase @Inject constructor(
 /*                response.data?.userId?.let {
                     sp.setInt(USER_ID, it)
                 }*/
-                emit(Resource.success(response.data))
+                emit(Resource.success(response.result))
             } else {
                 emit(Resource.error(response.message))
             }

@@ -10,12 +10,12 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ZeroUserApi {
-    @POST("api/v1/user")
+    @POST("/api/v1/user")
     suspend fun postUserInfo(
         @Body userInfo: UserInfoInput
     ): ResponseBody<PostUserInfo?>
 
-    @GET("api/v1/user/{userId}")
+    @GET("/api/v1/user/{userId}")
     suspend fun getUserInfo(
         @Path("userId") userId: Int
     ): ResponseBody<HomeUserInfo?>

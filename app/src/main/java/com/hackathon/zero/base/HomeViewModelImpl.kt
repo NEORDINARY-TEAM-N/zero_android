@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hackathon.zero.HomeViewModel
-import com.hackathon.zero.core.Resource
-import com.hackathon.zero.data.UserInfoInput
 import com.hackathon.zero.domain.use_case.GetUserInfoUseCase
-import com.hackathon.zero.domain.use_case.PostUserInfoUseCase
 import com.hackathon.zero.util.Constants.FRIDAY
 import com.hackathon.zero.util.Constants.MONDAY
 import com.hackathon.zero.util.Constants.SATURDAY

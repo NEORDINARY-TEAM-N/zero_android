@@ -4,8 +4,6 @@ package com.hackathon.zero.data
 import com.google.gson.annotations.SerializedName
 
 data class UserInfoInput(
-    @SerializedName("user_id")
-    val userId: Long,
     @SerializedName("gender")
     val gender: String,
     @SerializedName("height")
@@ -13,5 +11,11 @@ data class UserInfoInput(
     @SerializedName("name")
     val name: String,
     @SerializedName("weight")
-    val weight: Int
+    val weight: Int,
+    @SerializedName("age")
+    val age: Int,
+    @SerializedName("purposeType")
+    val purposeType: String,
+    @SerializedName("activityType")
+    val activityType: String
 )

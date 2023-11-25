@@ -7,7 +7,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         app:cardCornerRadius="8dp">
@@ -46,6 +46,7 @@
                     android:id="@+id/sugarManagementCheckView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="invisible"
                     android:src="@drawable/ic_red_check_24"
                     />
 
@@ -71,6 +72,7 @@
                     android:id="@+id/healthManagementCheckView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:visibility="invisible"
                     android:src="@drawable/ic_red_check_24"/>
 
 
