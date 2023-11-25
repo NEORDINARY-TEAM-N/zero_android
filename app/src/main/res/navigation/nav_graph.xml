@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_homeFragment_to_privateInfoFragment"
             app:destination="@id/privateInfoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_goalSettingFragment"
+            app:destination="@id/goalSettingFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -53,4 +56,9 @@
         android:name="com.hackathon.zero.presentation.inputinfo.InputInfo2Fragment"
         android:label="fragment_input_info2"
         tools:layout="@layout/fragment_input_info2" />
+    <fragment
+        android:id="@+id/goalSettingFragment"
+        android:name="com.hackathon.zero.GoalSettingFragment"
+        android:label="fragment_goal_setting"
+        tools:layout="@layout/fragment_goal_setting" />
 </navigation>

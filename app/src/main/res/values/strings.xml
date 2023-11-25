@@ -24,4 +24,8 @@
     <string name="agreeIntroText">정확한 당 섭취 기록을 위해 필요해요.</string>
     <string name="agreeText">동의</string>
     <string name="nameHintText">이름을 입력해 주세요</string>
+    <string name="myGoalText">나의 당 목표</string>
+    <string name="untilText"> 미만</string>
+    <string name="goalIntroText">%s님의 정보를 토대로 목표를 설정했어요.</string>
+    <string name="notGoalIntroText">000님의 정보를 토대로 목표를 설정했어요.</string>
 </resources>
