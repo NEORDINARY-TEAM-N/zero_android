@@ -6,4 +6,64 @@
     </style>
 
     <style name="Theme.Zero" parent="Base.Theme.Zero" />
+
+    <style name="h1">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="font">@font/pretendard_variable</item>
+    </style>
+
+    <style name="h2">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="font">@font/pretendard_variable</item>
+    </style>
+
+    <style name="h3">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">21sp</item>
+        <item name="font">@font/pretendard_variable</item>
+    </style>
+
+    <style name="h4">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="font">@font/pretendard_variable</item>
+    </style>
+
+    <style name="h5">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="font">@font/pretendard_variable</item>
+    </style>
+
+    <style name="b1">
+        <item name="android:textSize">15sp</item>
+        <item name="font">@font/pretendard_variable</item>
+    </style>
+
+    <style name="b2">
+        <item name="android:textSize">14sp</item>
+        <item name="font">@font/pretendard_variable</item>
+    </style>
+
+    <style name="b3">
+        <item name="android:textSize">13sp</item>
+        <item name="font">@font/pretendard_variable</item>
+    </style>
+
+    <style name="b4">
+        <item name="android:textSize">12sp</item>
+        <item name="font">@font/pretendard_variable</item>
+    </style>
+
+    <style name="caption1">
+        <item name="android:textSize">11sp</item>
+        <item name="font">@font/pretendard_variable</item>
+    </style>
+
+    <style name="caption2">
+        <item name="android:textSize">10sp</item>
+        <item name="font">@font/pretendard_variable</item>
+    </style>
 </resources>
