@@ -55,7 +55,22 @@
         android:id="@+id/inputInfo2Fragment"
         android:name="com.hackathon.zero.presentation.inputinfo.InputInfo2Fragment"
         android:label="fragment_input_info2"
-        tools:layout="@layout/fragment_input_info2" />
+        tools:layout="@layout/fragment_input_info2" >
+
+        <argument
+            android:name="weight"
+            app:argType="integer" />
+
+        <argument
+            android:name="age"
+            app:argType="integer" />
+        <argument
+            android:name="height"
+            app:argType="integer" />
+        <argument
+            android:name="gender"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/goalSettingFragment"
         android:name="com.hackathon.zero.GoalSettingFragment"

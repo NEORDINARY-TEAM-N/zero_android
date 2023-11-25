@@ -1,6 +1,7 @@
 package com.hackathon.zero.presentation.inputinfo
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.hackathon.zero.R
 import androidx.fragment.app.viewModels
@@ -17,6 +18,7 @@ class InputInfo2Fragment : BaseFragment<FragmentInputInfo2Binding>(R.layout.frag
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
+        Log.e("gender", arguments?.get("gender").toString())
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.showDialog.collect {
                 if(it) ManagementPurposeDialog(requireContext()) { index ->

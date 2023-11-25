@@ -2,6 +2,7 @@ package com.hackathon.zero.presentation.inputinfo
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -21,7 +22,15 @@ class InputInfoFragment : BaseFragment<FragmentInputInfoBinding>(R.layout.fragme
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.moveTo.collect {
                 runCatching {
-                    findNavController().navigate(it)
+                    findNavController().navigate(
+                        it,
+                        bundleOf(
+                            "weight" to viewModel.weight.value,
+                            "height" to viewModel.height.value,
+                            "age" to viewModel.age.value,
+                            "gender" to if(viewModel.isGenderSelectMan.value) 0 else 1
+                        )
+                    )
                 }
             }
         }

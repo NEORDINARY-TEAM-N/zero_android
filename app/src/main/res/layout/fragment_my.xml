@@ -44,10 +44,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <View
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/calendarView"
             android:layout_width="0dp"
-            android:layout_height="76dp"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            tools:listitem="@layout/itme_calender"
+            tools:itemCount="7"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
