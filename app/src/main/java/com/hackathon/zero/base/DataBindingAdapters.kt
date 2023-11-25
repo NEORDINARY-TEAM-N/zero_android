@@ -16,8 +16,23 @@ object DataBindingAdapters {
         view.text = "${height}cm"
     }
 
-    @BindingAdapter("bind:weightFormat")
+    @BindingAdapter("bind:weightKgFormat")
     fun setWeightFormat(view: TextView, weight: Int) {
         view.text = "${weight}kg"
+    }
+
+    @BindingAdapter("bind:weightGFormat")
+    fun setWeightGFormat(view: TextView, weight: Int) {
+        view.text = "${weight}g"
+    }
+
+    @BindingAdapter("bind:capacityFormat")
+    fun setCapacity(view:TextView, capacity: Int) {
+        view.text = "${capacity}ml"
+    }
+
+    @BindingAdapter("bind:calorieFormat")
+    fun setCalorie(view:TextView, calorie: Int){
+        view.text = "${calorie}Kcal"
     }
 }
