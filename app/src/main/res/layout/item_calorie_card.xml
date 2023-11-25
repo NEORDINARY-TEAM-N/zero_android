@@ -60,6 +60,7 @@
             android:textColor="@color/gray600"
             android:theme="@style/pretendard_medium.14sp"
             app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{@string/min(item.lastProductId)}"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="3분전" />
 
