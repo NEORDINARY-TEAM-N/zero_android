@@ -1,28 +1,21 @@
 package com.hackathon.zero.domain.use_case
 
-import com.hackathon.zero.data.UserInfoInput
+import com.hackathon.zero.core.Resource
 import com.hackathon.zero.domain.UserInfoRepository
 import com.hackathon.zero.util.Constants.ERROR_UNKNOWN
-import com.hackathon.zero.core.Resource
-import com.hackathon.zero.util.Constants.USER_ID
-import com.hackathon.zero.util.SharedPreferencesUtil
 import com.hackathon.zero.util.isSuccessful
 import kotlinx.coroutines.flow.flow
 import java.util.concurrent.CancellationException
 import javax.inject.Inject
 
-class PostUserInfoUseCase @Inject constructor(
-    private val userInfoRepository: UserInfoRepository,
-    private val sp: SharedPreferencesUtil
+class GetUserInfoUseCase @Inject constructor(
+    private val userInfoRepository: UserInfoRepository
 ) {
-    operator fun invoke(userInfoInput: UserInfoInput) = flow {
+    operator fun invoke(userId: Int) = flow {
         try {
             emit(Resource.loading())
-            val response = userInfoRepository.postUserInfo(userInfoInput)
+            val response = userInfoRepository.getUserInfo(userId)
             if (isSuccessful(response.status)) {
-/*                response.data?.userId?.let {
-                    sp.setInt(USER_ID, it)
-                }*/
                 emit(Resource.success(response.data))
             } else {
                 emit(Resource.error(response.message))

@@ -9,4 +9,6 @@ object Constants {
     const val HTTP_STATUS_REDIRECTION = 300
     const val HTTP_STATUS_CLIENT_ERROR = 400
     const val HTTP_STATUS_SERVER_ERROR = 500
+
+    const val USER_ID = "userId"
 }

@@ -7,7 +7,11 @@ import com.hackathon.zero.domain.UserInfoRepository
 class UserInfoRepositoryImpl(
     private val api: ZeroUserApi
 ) : UserInfoRepository {
-    override suspend fun postUserInfo(userInfo: UserInfo): ResponseBody<String?> {
-        return api.postUserInfo(userInfo)
+    override suspend fun postUserInfo(userInfoInput: UserInfoInput): ResponseBody<PostUserInfo?> {
+        return api.postUserInfo(userInfoInput)
+    }
+
+    override suspend fun getUserInfo(userId: Int): ResponseBody<HomeUserInfo?> {
+        return api.getUserInfo(userId)
     }
 }
