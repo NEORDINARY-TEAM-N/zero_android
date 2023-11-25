@@ -1,7 +1,8 @@
 package com.hackathon.zero.di
 
 import android.content.Context
-import com.hackathon.zero.data.UserInfoRepositoryImpl
+import com.hackathon.zero.data.repository.UserInfoRepositoryImpl
+import com.hackathon.zero.di.api.ProductListApi
 import com.hackathon.zero.di.api.ZeroUserApi
 import com.hackathon.zero.domain.UserInfoRepository
 import com.hackathon.zero.util.Constants
@@ -52,6 +53,16 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ZeroUserApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideProductListService(okHttpClient: OkHttpClient): ProductListApi =
+        Retrofit.Builder()
+            .baseUrl(Constants.BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(ProductListApi::class.java)
 
     @Provides
     @Singleton
