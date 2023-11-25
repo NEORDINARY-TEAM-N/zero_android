@@ -8,10 +8,7 @@
             name="vm"
             type="com.hackathon.zero.HomeViewModel" />
 
-        <variable
-            name="userSugar"
-            type="com.hackathon.zero.HomeViewModel" />
-    </data>
+        </data>
 
     <com.sothree.slidinguppanel.SlidingUpPanelLayout
         android:id="@+id/main_frame"

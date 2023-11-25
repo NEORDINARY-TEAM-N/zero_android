@@ -43,5 +43,14 @@
         android:id="@+id/inputInfoFragment"
         android:name="com.hackathon.zero.InputInfoFragment"
         android:label="fragment_input_info"
-        tools:layout="@layout/fragment_input_info" />
+        tools:layout="@layout/fragment_input_info" >
+        <action
+            android:id="@+id/action_inputInfoFragment_to_inputInfo2Fragment"
+            app:destination="@id/inputInfo2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputInfo2Fragment"
+        android:name="com.hackathon.zero.InputInfo2Fragment"
+        android:label="fragment_input_info2"
+        tools:layout="@layout/fragment_input_info2" />
 </navigation>
