@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">zero</string>
 
-
     <string name="home_header_logged_in">%s님,\n오늘 섭취량을 확인해보세요</string>
     <string name="home_header_not_logged_in">User님,\n프로필을 등록해주세요</string>
     <string name="sugar_info">%fg</string>
@@ -12,4 +11,10 @@
     <string name="sugarText">당 </string>
     <string name="calorieText">칼로리 </string>
     <string name="amount_none">-</string>
+    <string name="next">다음</string>
+    <string name="age">나이</string>
+    <string name="weightText">몸무게</string>
+    <string name="heightTexr">키</string>
+    <string name="genderText">성별</string>
+    <string name="inputIntroText">당 섭취량 목표 설정을 위해 필요해요!</string>
 </resources>
