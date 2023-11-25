@@ -107,7 +107,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="@{vm.sugar != null ? @string/sugar_info(vm.sugar) : @string/sugar_info(@string/amount_none)}"
+                            android:text="@{vm.sugar != 0.0 ? @string/sugar_info(vm.sugar) : @string/sugar_info(@string/amount_none)}"
                             android:textStyle="bold"
                             tools:text="16g" />
 
@@ -141,7 +141,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="@{vm.calories != null ? @string/calorie_info(vm.calories) : @string/calorie_info(@string/amount_none)}"
+                            android:text="@{vm.calories != 0 ? @string/calorie_info(vm.calories) : @string/calorie_info(@string/amount_none)}"
                             android:textStyle="bold"
                             tools:text="100kcal" />
 

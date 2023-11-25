@@ -1,6 +1,9 @@
-package com.hackathon.zero.data
+package com.hackathon.zero.data.repository
 
 import com.hackathon.zero.core.dto.ResponseBody
+import com.hackathon.zero.data.HomeUserInfo
+import com.hackathon.zero.data.PostUserInfo
+import com.hackathon.zero.data.UserInfoInput
 import com.hackathon.zero.di.api.ZeroUserApi
 import com.hackathon.zero.domain.UserInfoRepository
 

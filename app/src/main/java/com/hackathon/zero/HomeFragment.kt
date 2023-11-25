@@ -7,6 +7,8 @@ import com.hackathon.zero.base.BaseFragment
 import com.hackathon.zero.base.HomeViewModelImpl
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+
+import androidx.navigation.fragment.findNavController
 import com.hackathon.zero.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -18,6 +20,11 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.llTotalIntake.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_homeFragment_to_myFragment
+            )
+        }
         binding.vm = viewModel
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.sharedAction.collect {

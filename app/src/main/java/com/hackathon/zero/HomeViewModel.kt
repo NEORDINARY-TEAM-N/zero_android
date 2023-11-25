@@ -10,8 +10,8 @@ interface HomeViewModel {
     val isLoading: StateFlow<Boolean>
     val errorMessage: StateFlow<String?>
     val profileName: StateFlow<String>
-    val sugar: StateFlow<Double?>
-    val calories: StateFlow<Int?>
+    val sugar: StateFlow<Double>
+    val calories: StateFlow<Int>
     val stamps: StateFlow<Map<String, Boolean>>
     val sharedAction: SharedFlow<Intent>
 

@@ -34,7 +34,7 @@ class HomeViewModelImpl @Inject constructor(
     private val sp: SharedPreferencesUtil
 ): ViewModel(), HomeViewModel {
 
-    private var stampMap = mapOf(
+    private var stampMap = mapOf<String, Boolean>(
         MONDAY to false,
         TUESDAY to false,
         WEDNESDAY to false,
@@ -56,12 +56,12 @@ class HomeViewModelImpl @Inject constructor(
     override val profileName: StateFlow<String>
         get() = _profileName
 
-    private val _sugar: MutableStateFlow<Double?> = MutableStateFlow(null)
-    override val sugar: StateFlow<Double?>
+    private val _sugar: MutableStateFlow<Double> = MutableStateFlow(0.0)
+    override val sugar: StateFlow<Double>
         get() = _sugar
 
-    private val _calories: MutableStateFlow<Int?> = MutableStateFlow(null)
-    override val calories: StateFlow<Int?>
+    private val _calories: MutableStateFlow<Int> = MutableStateFlow(0)
+    override val calories: StateFlow<Int>
         get() = _calories
 
     private val _stamps = MutableStateFlow(stampMap)

@@ -3,8 +3,9 @@
 
     <string name="home_header_logged_in">%s님,\n오늘 섭취량을 확인해보세요</string>
     <string name="home_header_not_logged_in">User님,\n프로필을 등록해주세요</string>
-    <string name="sugar_info">%fg</string>
-    <string name="calorie_info">%dkcal</string>
+    <string name="sugar_info">%sg</string>
+    <string name="calorie_info">%skcal</string>
+    <string name="ml_info">%dml</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todayTotalTextIntake">오늘 내 총 섭취량</string>
@@ -27,4 +28,8 @@
     <string name="header_beverage_record">음료 기록</string>
     <string name="hint_enter_beverage">음료명을 입력해주세요.</string>
     <string name="btn_complete">완료</string>
+    <string name="myGoalText">나의 당 목표</string>
+    <string name="untilText"> 미만</string>
+    <string name="goalIntroText">%s님의 정보를 토대로 목표를 설정했어요.</string>
+    <string name="notGoalIntroText">000님의 정보를 토대로 목표를 설정했어요.</string>
 </resources>
