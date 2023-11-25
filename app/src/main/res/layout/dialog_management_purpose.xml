@@ -17,6 +17,12 @@
             android:padding="20dp">
 
 
+            <View
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="320dp"
+                android:layout_height="2dp"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/titleView"
                 android:layout_width="wrap_content"
@@ -82,7 +88,7 @@
                 android:id="@+id/completeButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="12dp"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/shape_round_8"
                 android:backgroundTint="@color/red300"
