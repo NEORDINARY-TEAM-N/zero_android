@@ -100,6 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
+                android:hint="@string/nameHintText"
                 android:maxLength="5"
                 android:text="@={vm.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -188,25 +189,27 @@
             android:layout_marginTop="12dp"
             android:layout_marginRight="4dp"
             android:background="@drawable/shape_round_8"
-            android:onClick="@{() -> vm.heightClicked()}"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@id/weightSelectView"
             app:layout_constraintTop_toBottomOf="@id/heightTitleView">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:theme="@style/pretendard_medium.15sp"
-                bind:heightFormat="@{vm.height}"
-                tools:text="180cm" />
+                android:background="null"
+                android:ellipsize="start"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:text="@={vm.height}"
+                android:theme="@style/pretendard_medium.15sp" />
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_down" />
+                android:text="cm" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -218,25 +221,25 @@
             android:layout_marginTop="12dp"
             android:layout_marginRight="20dp"
             android:background="@drawable/shape_round_8"
-            android:onClick="@{() -> vm.weightClicked()}"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
             app:layout_constraintLeft_toRightOf="@id/heightSelectView"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/weightTitleView">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:theme="@style/pretendard_medium.15sp"
-                bind:weightFormat="@{vm.weight}"
-                tools:text="72kg" />
+                android:background="null"
+                android:inputType="numberDecimal"
+                android:text="@={vm.weight}"
+                android:theme="@style/pretendard_medium.15sp" />
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_down" />
+                android:text="kg" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -251,23 +254,43 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/heightSelectView" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ageSelectView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
-            android:background="@drawable/background_spinner"
-            android:gravity="start|center"
-            android:onClick="@{()->vm.ageClicked()}"
-            android:text="@{vm.age}"
-            android:textColor="@color/gray600"
-            android:theme="@style/pretendard_medium.15sp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/shape_round_8"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ageTitleView"
-            tools:text="24" />
+            app:layout_constraintTop_toBottomOf="@id/ageTitleView">
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="만 " />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="null"
+                android:ellipsize="start"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:text="@={vm.age}"
+                android:theme="@style/pretendard_medium.15sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="세" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="0dp"
