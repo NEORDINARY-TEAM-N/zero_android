@@ -25,12 +25,15 @@ class InputInfoFragment : BaseFragment<FragmentInputInfoBinding>(R.layout.fragme
                     findNavController().navigate(
                         it,
                         bundleOf(
-                            "weight" to viewModel.weight.value,
-                            "height" to viewModel.height.value,
-                            "age" to viewModel.age.value,
+                            "name" to viewModel.name.value,
+                            "weight" to viewModel.weight.value.toInt(),
+                            "height" to viewModel.height.value.toInt(),
+                            "age" to viewModel.age.value.toInt(),
                             "gender" to if(viewModel.isGenderSelectMan.value) 0 else 1
                         )
                     )
+                }.onFailure {
+                    it.printStackTrace()
                 }
             }
         }

@@ -16,7 +16,7 @@ class GetUserInfoUseCase @Inject constructor(
             emit(Resource.loading())
             val response = userInfoRepository.getUserInfo(userId)
             if (isSuccessful(response.status)) {
-                emit(Resource.success(response.data))
+                emit(Resource.success(response.result))
             } else {
                 emit(Resource.error(response.message))
             }

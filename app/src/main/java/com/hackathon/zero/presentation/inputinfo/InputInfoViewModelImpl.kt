@@ -13,7 +13,7 @@ class InputInfoViewModelImpl: ViewModel(), InputInfoViewModel {
 
     override val name: MutableStateFlow<String> = MutableStateFlow("")
 
-    private val _isGenderSelectMan: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    private val _isGenderSelectMan: MutableStateFlow<Boolean> = MutableStateFlow(true)
     override val isGenderSelectMan: StateFlow<Boolean> get() = _isGenderSelectMan
 
     override val weight: MutableStateFlow<String> = MutableStateFlow("")

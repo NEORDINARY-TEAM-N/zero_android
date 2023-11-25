@@ -18,7 +18,7 @@ class GetProductListUseCase @Inject constructor(
             emit(Resource.loading())
             val response = productRepository.getProductList(keyword, lastProductId)
             if(isSuccessful(response.status)) {
-                emit(Resource.success(response.data))
+                emit(Resource.success(response.result))
             } else {
                 emit(Resource.error(response.message))
             }
