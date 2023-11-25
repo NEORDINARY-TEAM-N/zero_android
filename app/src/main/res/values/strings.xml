@@ -1,14 +1,16 @@
 <resources>
     <string name="app_name">zero</string>
 
-    <string name="hello_name">%s님, 안녕하세요.</string>
-    <string name="sugar_info">%f g</string>
-    <string name="calorie_info">%d kcal</string>
+    <string name="home_header_logged_in">%s님,\n오늘 섭취량을 확인해보세요</string>
+    <string name="home_header_not_logged_in">User님,\n프로필을 등록해주세요</string>
+    <string name="sugar_info">%fg</string>
+    <string name="calorie_info">%dkcal</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todayTotalTextIntake">오늘 내 총 섭취량</string>
     <string name="sugarText">당 </string>
     <string name="calorieText">칼로리 </string>
+    <string name="amount_none">-</string>
     <string name="next">다음</string>
     <string name="age">나이</string>
     <string name="weightText">몸무게</string>

@@ -29,8 +29,8 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 style="@style/h2"
-                tools:text = "000, 안녕하세요"
-                android:text="@{@string/hello_name(vm.profileName)}"
+                tools:text = "000님,\n오늘의 섭취량을 확인하세요"
+                android:text="@{vm.profileName != null ? @string/home_header_logged_in(vm.profileName) : @string/home_header_not_logged_in}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -91,7 +91,7 @@
                         app:layout_constraintTop_toTopOf="@id/sugarT"
                         app:layout_constraintBottom_toBottomOf="@id/sugarT"
                         style="@style/h5"
-                        android:text="@string/sugar_info"
+                        android:text="@{vm.sugar != null ? @string/sugar_info(vm.sugar) : @string/sugar_info(@string/amount_none)}"
                         tools:text="16g"
                         android:id="@+id/mySugarT"
                         android:layout_width="wrap_content"
@@ -127,7 +127,7 @@
                         app:layout_constraintTop_toTopOf="@id/sugarT"
                         app:layout_constraintBottom_toBottomOf="@id/sugarT"
                         style="@style/h5"
-                        android:text="@string/calorie_info"
+                        android:text="@{vm.calories != null ? @string/calorie_info(vm.calories) : @string/calorie_info(@string/amount_none)}"
                         tools:text="160kcal"
                         android:maxLines="1"
                         android:ellipsize="end"
