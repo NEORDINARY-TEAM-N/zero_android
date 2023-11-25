@@ -5,7 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hackathon.zero.HomeViewModel
 import com.hackathon.zero.core.Resource
+import com.hackathon.zero.data.Product
+import com.hackathon.zero.data.ProductSearchItem
 import com.hackathon.zero.data.UserInfoInput
+import com.hackathon.zero.domain.use_case.GetProductListUseCase
 import com.hackathon.zero.domain.use_case.GetUserInfoUseCase
 import com.hackathon.zero.domain.use_case.PostUserInfoUseCase
 import com.hackathon.zero.util.Constants.FRIDAY
@@ -31,6 +34,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModelImpl @Inject constructor(
     private val getUserInfoUseCase: GetUserInfoUseCase,
+    private val getProductListUseCase: GetProductListUseCase,
     private val sp: SharedPreferencesUtil
 ): ViewModel(), HomeViewModel {
 
@@ -68,9 +72,17 @@ class HomeViewModelImpl @Inject constructor(
     override val stamps: StateFlow<Map<String, Boolean>>
         get() = _stamps
 
+    override var query = MutableStateFlow<String>("")
+
     private val _sharedAction: MutableSharedFlow<Intent> = MutableSharedFlow()
     override val sharedAction: SharedFlow<Intent>
         get() = _sharedAction
+
+    private val _productList: MutableStateFlow<MutableList<ProductSearchItem?>> = MutableStateFlow(
+        mutableListOf()
+    )
+    override val productList: StateFlow<MutableList<ProductSearchItem?>>
+        get() = _productList
 
     override fun getUserInfo() {
         val userId = sp.getInt(USER_ID, USER_ID_NONE)
@@ -79,6 +91,18 @@ class HomeViewModelImpl @Inject constructor(
 
     override fun sharedClicked() {
 
+    }
+
+    override fun queryChanged(query: String, lastId: Int) {
+        getProductListUseCase(query, lastId).onEach { productList ->
+            if (isLoading(productList)) {
+                _isLoading.value = true
+            } else if (isSuccess(productList)) {
+                _productList.value = productList.data ?: mutableListOf()
+            } else {
+                _errorMessage.value = productList.message
+            }
+        }.launchIn(viewModelScope)
     }
 
     private fun postUserInfoValue(userId: Int) {
@@ -96,6 +120,8 @@ class HomeViewModelImpl @Inject constructor(
             }
         }.launchIn(viewModelScope)
     }
+
+
 
 
     companion object {

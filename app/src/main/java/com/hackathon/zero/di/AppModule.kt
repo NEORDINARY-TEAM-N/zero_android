@@ -1,9 +1,11 @@
 package com.hackathon.zero.di
 
 import android.content.Context
+import com.hackathon.zero.data.repository.ProductRepositoryImpl
 import com.hackathon.zero.data.repository.UserInfoRepositoryImpl
 import com.hackathon.zero.di.api.ProductListApi
 import com.hackathon.zero.di.api.ZeroUserApi
+import com.hackathon.zero.domain.ProductRepository
 import com.hackathon.zero.domain.UserInfoRepository
 import com.hackathon.zero.util.Constants
 import com.hackathon.zero.util.SharedPreferencesUtil
@@ -68,6 +70,11 @@ object AppModule {
     @Singleton
     fun provideUserInfoRepository(api: ZeroUserApi): UserInfoRepository =
         UserInfoRepositoryImpl(api)
+
+    @Provides
+    @Singleton
+    fun provideProductRepository(api: ProductListApi): ProductRepository =
+        ProductRepositoryImpl(api)
 
     @Provides
     @Singleton

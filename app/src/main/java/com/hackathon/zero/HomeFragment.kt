@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 
 import androidx.navigation.fragment.findNavController
 import com.hackathon.zero.databinding.FragmentHomeBinding
+import com.hackathon.zero.presentation.search.SearchRVAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by viewModels<HomeViewModelImpl>()
+    private lateinit var rvAdapter: SearchRVAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,5 +37,12 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.btnStart.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_privateInfoFragment)
         }
+
+        initializeRVAdapter()
+    }
+
+    private fun initializeRVAdapter() {
+        rvAdapter = SearchRVAdapter()
+        rvAdapter.setList(viewModel.productList.value)
     }
 }
