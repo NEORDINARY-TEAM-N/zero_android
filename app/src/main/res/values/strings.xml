@@ -24,4 +24,7 @@
     <string name="agreeIntroText">정확한 당 섭취 기록을 위해 필요해요.</string>
     <string name="agreeText">동의</string>
     <string name="nameHintText">이름을 입력해 주세요</string>
+    <string name="header_beverage_record">음료 기록</string>
+    <string name="hint_enter_beverage">음료명을 입력해주세요.</string>
+    <string name="btn_complete">완료</string>
 </resources>

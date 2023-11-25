@@ -11,4 +11,12 @@ object Constants {
     const val HTTP_STATUS_SERVER_ERROR = 500
 
     const val USER_ID = "userId"
+
+    const val MONDAY = "월"
+    const val TUESDAY = "화"
+    const val WEDNESDAY = "수"
+    const val THURSDAY = "목"
+    const val FRIDAY = "금"
+    const val SATURDAY = "토"
+    const val SUNDAY = "일"
 }
