@@ -2,6 +2,11 @@ package com.hackathon.zero.data
 
 import com.google.gson.annotations.SerializedName
 
+
+data class ProductItem(
+    @SerializedName("productInfoList") val productInfoList: List<Product>
+)
+
 data class Product(
     @SerializedName("productName") val productName: String,
     @SerializedName("productSugar") val productSugar: Double,

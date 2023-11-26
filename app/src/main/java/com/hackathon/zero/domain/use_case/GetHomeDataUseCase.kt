@@ -22,7 +22,7 @@ class GetHomeDataUseCase @Inject constructor(
             }
         } catch (e: Exception) {
             if (e is CancellationException) throw e
-            emit(Resource.error(e.localizedMessage ?: ERROR_UNKNOWN))
+            // emit(Resource.error(e.localizedMessage ?: ERROR_UNKNOWN))
         }
     }
 }

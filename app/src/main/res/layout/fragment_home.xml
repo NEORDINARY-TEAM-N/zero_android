@@ -504,22 +504,37 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/search_view"
+            <LinearLayout
+                android:id="@+id/ll_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="true"
-                android:padding="20dp"
-                app:iconifiedByDefault="false"
                 app:layout_constraintTop_toBottomOf="@id/ll_header"
-                app:layout_constraintVertical_weight="1"
-                app:queryHint="@string/hint_enter_beverage" />
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:layout_marginTop="40dp"
+                    app:iconifiedByDefault="false"
+                    app:layout_constraintVertical_weight="1"
+                    android:layout_weight="8"
+                    app:queryHint="@string/hint_enter_beverage" />
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_search"
+                    android:layout_weight="3"
+                    android:layout_gravity="center_vertical"
+                    android:onClick="@{() -> vm.queryChanged()}"/>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_search_result"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintTop_toBottomOf="@id/search_view"
+                app:layout_constraintTop_toBottomOf="@id/ll_search"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginHorizontal="20dp"/>

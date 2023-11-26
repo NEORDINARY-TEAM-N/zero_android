@@ -1,6 +1,7 @@
 package com.hackathon.zero
 
 import android.content.Intent
+import androidx.lifecycle.LiveData
 import com.hackathon.zero.data.Product
 import com.hackathon.zero.data.ProductSearchItem
 import com.hackathon.zero.data.UserInfoInput
@@ -18,11 +19,12 @@ interface HomeViewModel {
     val stamps: StateFlow<List<Boolean>>
     val sharedAction: SharedFlow<Intent>
     var query: MutableStateFlow<String>
-    val productList: StateFlow<MutableList<ProductSearchItem?>>
+    val productList: LiveData<List<ProductSearchItem?>>
 
     fun sharedClicked()
 
     fun getUserInfo()
+    fun listUpdate(position: Int)
 
-    fun queryChanged(query: String, lastId: Int = 0)
+    fun queryChanged()
 }

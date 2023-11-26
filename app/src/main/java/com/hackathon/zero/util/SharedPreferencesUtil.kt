@@ -12,12 +12,12 @@ class SharedPreferencesUtil(context: Context) {
     }
 
     fun setString(key: String, str: String) {
-        prefs.edit().putString(key, str).apply()
+        prefs.edit().putString(key, str).commit()
     }
 
     fun getInt(key: String, defValue: Int): Int = prefs.getInt(key, defValue)
 
     fun setInt(key: String, num: Int) {
-        prefs.edit().putInt(key, num).apply()
+        prefs.edit().putInt(key, num).commit()
     }
 }

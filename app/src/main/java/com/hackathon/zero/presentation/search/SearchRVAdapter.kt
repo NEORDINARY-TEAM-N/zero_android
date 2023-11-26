@@ -1,23 +1,48 @@
 package com.hackathon.zero.presentation.search
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hackathon.zero.data.Product
+import com.hackathon.zero.data.ProductItem
 import com.hackathon.zero.data.ProductSearchItem
 import com.hackathon.zero.databinding.ItemCalorieCardBinding
 import com.hackathon.zero.databinding.ItemProductSearchBinding
 
-class SearchRVAdapter() :
-    RecyclerView.Adapter<SearchRVAdapter.ProductItemHolder>() {
+class SearchRVAdapter(val onSelectClicked: (Int) -> Unit) :
+    ListAdapter<ProductSearchItem, SearchRVAdapter.ProductItemHolder>(diffutil) {
 
-    private var list: List<ProductSearchItem?> = listOf()
+    companion object {
+        val diffutil = object: DiffUtil.ItemCallback<ProductSearchItem>() {
+            override fun areItemsTheSame(
+                oldItem: ProductSearchItem,
+                newItem: ProductSearchItem
+            ): Boolean {
+                Log.e("아1", (oldItem.product.productName == newItem.product.productName).toString())
+                return oldItem.product.productName == newItem.product.productName
+            }
 
+            override fun areContentsTheSame(
+                oldItem: ProductSearchItem,
+                newItem: ProductSearchItem
+            ): Boolean {
+                Log.e("아2", (oldItem.isSelect == newItem.isSelect).toString())
+                return oldItem.isSelect == newItem.isSelect
+            }
+
+        }
+    }
     inner class ProductItemHolder(
         private val binding: ItemProductSearchBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: ProductSearchItem) {
             binding.item = data
+            binding.root.setOnClickListener {
+                onSelectClicked(adapterPosition)
+            }
         }
     }
 
@@ -30,14 +55,7 @@ class SearchRVAdapter() :
             )
         )
 
-    override fun getItemCount(): Int = list.size
-
     override fun onBindViewHolder(holder: ProductItemHolder, position: Int) {
-        holder.bind(list[position]!!)
-    }
-
-    fun setList(newList: List<ProductSearchItem?>) {
-        list = newList
-        notifyDataSetChanged()
+        holder.bind(getItem(position))
     }
 }
