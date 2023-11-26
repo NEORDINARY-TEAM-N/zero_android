@@ -21,9 +21,10 @@ class PostUserInfoUseCase @Inject constructor(
             emit(Resource.loading())
             val response = userInfoRepository.postUserInfo(userInfoInput)
             if (isSuccessful(response.status)) {
-/*                response.data?.userId?.let {
+                response.result?.userId?.let {
                     sp.setInt(USER_ID, it)
-                }*/
+                }
+
                 emit(Resource.success(response.result))
             } else {
                 emit(Resource.error(response.message))
